@@ -3,8 +3,7 @@
 #include "action_layer.h"
 
 #define BASE 0		// default layer
-#define Numbers 1	// numbers
-#define Symbols 2	// symbols
+#define Symbols 1	// symbols
 #define Fn 3		// symbols
 #define MDIA 20		// media keys
 
@@ -12,23 +11,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   $    |   [  |   {  |   }  |   (  |   =  |      |           | RIGHT|   6  |   7  |   8  |   9  |   0  |   \    |
+ * |        |   [  |   {  |   }  |   (  |   =  |      |           |      |   *  |   )  |   +  |   ]  |   !  |   #    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   |    |  ,;  |  ,<  |  .>  |   P  |   Y  |  Meh |           |  L1  |   F  |   G  |   C  |   R  |   L  |   /    |
+ * |   |    |  ,;  |  ,<  |  .>  |   P  |   Y  |  Meh |           |  Meh |   F  |   G  |   C  |   R  |   L  |   /    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |   &    | A/Gui| O/Alt|E/Shft|U/Ctrl|   I  |------|           |------|   D  |   H  |   T  |   N  |S / L2|   -    |
- * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
- * |        |  '"  |   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |Z/Ctrl| RShift |
+ * |   &    | A/Gui| O/Alt|E/Shft|U/Ctrl|   I  |------|           |------|   D  |H/Ctrl|T/Shft| N/Alt|S/Gui |   -    |
+ * |--------+------+------+------+------+------| Hyper|           | Hyper|------+------+------+------+------+--------|
+ * |   $    |  '"  |   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |   Z  |   \    |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |  Up  | Down |   [  |   ]  | ~L1  |
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | CAC  |  CAI |       | Alt  |Ctrl/Esc|
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | App  |       | PgUp |        |      |
- *                                 |Space/| Bck/ |------|       |------|  Tab   |Enter |
- *                                 | Numb | Symb | Del  |       | PgDn |        |      |
- *                                 `--------------------'       `----------------------'
+ *                                        | CAC  |  CAI |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      | App  |       |      |      |      |
+ *                                 |Space/| Bck  |------|       |------|  Tab |Enter/|
+ *                                 | Symb |      | Del  |       |  Esc |      |  Fn  |
+ *                                 `--------------------'       `--------------------'
  *
  * CAC = Ctrl Alt Canc	(for Windows)
  * CAI = Ctrl Alt Ins	(for VWMare)
@@ -36,24 +35,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = KEYMAP(
         // left hand
-		KC_DLR,		KC_LBRC,		KC_LCBR,		KC_RCBR,		KC_LPRN,		KC_EQL,	KC_TRNS,
-		KC_PIPE,	KC_QUOT,		KC_COMM,		KC_DOT,			KC_P,			KC_Y,	MEH_T(KC_NO),
-		KC_AMPR,	GUI_T(KC_A),	ALT_T(KC_O),	SFT_T(KC_E),	MOD_LCTL(KC_U), KC_I,
-        KC_TRNS,    KC_QUOT,		KC_Q,			KC_J,			KC_K,			KC_X,   ALL_T(KC_NO),
+		KC_TRNS,	KC_LBRC,		KC_LCBR,		KC_RCBR,		KC_LPRN,		KC_EQL,		KC_TRNS,
+		KC_PIPE,	KC_QUOT,		KC_COMM,		KC_DOT,			KC_P,			KC_Y,		MEH_T(KC_NO),
+		KC_AMPR,	GUI_T(KC_A),	ALT_T(KC_O),	SFT_T(KC_E),	CTL_T(KC_U),	KC_I,
+		KC_DLR,		KC_QUOT,		KC_Q,			KC_J,			KC_K,			KC_X,		ALL_T(KC_NO),
 		KC_TRNS,	KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
 		
 																		LALT(LCTL(KC_DEL)),		LALT(LCTL(KC_INS)),
 																								ALT_T(KC_APP),
-												LT(Numbers, KC_SPC),	LT(Symbols, KC_BSPC),	KC_DEL,
+												LT(Symbols, KC_SPC),	KC_BSPC,				KC_DEL,
         // right hand
-             KC_RGHT,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_BSLS,
-             TG(1),       KC_F,   KC_G,   KC_C,   KC_R,   KC_L,             KC_SLSH,
-                          KC_D,   KC_H,   KC_T,   KC_N,   LT(MDIA, KC_S),   KC_MINS,
-             MEH_T(KC_NO),KC_B,   KC_M,   KC_W,   KC_V,   CTL_T(KC_Z),      KC_RSFT,
-                                  KC_UP,  KC_DOWN,KC_LBRC,KC_RBRC,          KC_FN1,
-             KC_LALT,        CTL_T(KC_ESC),
-             KC_PGUP,
-             KC_PGDN,KC_TAB, KC_ENT
+		KC_TRNS,		KC_ASTR,	KC_RPRN,		KC_PLUS,		KC_RBRC,		KC_EXLM,		KC_HASH,
+		MEH_T(KC_NO),	KC_F,		KC_G,			KC_C,			KC_R,			KC_L,			KC_SLSH,
+                        KC_D,		CTL_T(KC_H),	SFT_T(KC_T),	ALT_T(KC_N),	GUI_T(KC_S),	KC_MINS,
+		ALL_T(KC_NO),	KC_B,		KC_M,			KC_W,			KC_V,			KC_Z,			KC_BSLS,
+									KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
+		
+		KC_TRNS,	KC_TRNS,
+		KC_TRNS,
+		KC_ESC,		KC_TAB,	KC_ENT
     ),
 /* Keymap 1: Symbol Layer
  *
@@ -113,8 +113,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |Brwser|
- *                                 |      |      |------|       |------|      |Back  |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
