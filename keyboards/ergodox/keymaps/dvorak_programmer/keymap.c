@@ -4,8 +4,8 @@
 
 #define BASE 0		// default layer
 #define Symbols 1	// symbols
-#define Accents 2	// accented letter
-#define Fn 3		// Function numbers
+#define Fn 2		// Function numbers
+#define Accents 3	// accented letter
 #define MDIA 4		// media keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -101,8 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS,		KC_TRNS,	KC_TRNS
 	),
 
-
-/* Keymap 3: Fn Layer
+/* Keymap 2: Fn Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |  F10 |  F11 |  F12 |      |        |
@@ -146,7 +145,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS,		KC_TRNS,	KC_TRNS
 	),
 
-/* Keymap 4: Media and mouse keys
+
+
+/* Keymap 3: Accents Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   á  |   é  |   ó  |   ú  |   í  |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   à  |   è  |   ò  |   ù  |   ì  |------|           |------|      | RCtrl| RShft| RAlt | RGui |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   ä  |   ë  |   ö  |   ü  |   ï  |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+ [Accents] = KEYMAP(
+       // left hand
+		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+		KC_TRNS,		UC(0xa1),	UC(0xa9),	UC(0xad),	UC(0xb3),	UC(0xad),	KC_TRNS,
+		KC_TRNS,		UC(0xa0),	UC(0xa8),	UC(0xac),	UC(0xb2),	UC(0xac),
+		KC_TRNS,		UC(0xa4),	UC(0xab),	UC(0xaf),	UC(0xb6),	UC(0xaf),	KC_TRNS,
+		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+
+																		KC_TRNS,	KC_TRNS,
+																					KC_TRNS,
+															KC_TRNS,	KC_TRNS,	KC_TRNS,
+		// right hand
+		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+						KC_TRNS,	KC_RCTRL,	KC_RSHIFT,	KC_RALT,	KC_RGUI,	KC_TRNS,
+		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+									KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS
+
+		KC_TRNS,		KC_TRNS,
+		KC_TRNS,
+		KC_TRNS,		KC_TRNS,	KC_TRNS
+	),
+
+	
+	/* Keymap 4: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
