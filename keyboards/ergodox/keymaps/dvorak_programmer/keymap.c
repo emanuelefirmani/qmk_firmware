@@ -1,6 +1,16 @@
 #include "ergodox.h"
-#include "debug.h"
 #include "action_layer.h"
+
+
+enum planck_keycodes {
+	DVORAK = SAFE_RANGE,
+	SYMB,
+	FUNCTION,
+	ACCENTS,
+	NAVIGATION,
+	MEDIA,
+	DYNAMIC_MACRO_RANGE,
+};
 
 #define BASE 0		// default layer
 #define Symbols 1		// symbols
@@ -8,12 +18,15 @@
 #define Accents 3		// accented letter
 #define Navi 4			// navigation
 #define MDIA 5			// media keys
+#define _DYN 6		// macro keys
+
+#include "dynamic_macro.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |   [  |   {  |   }  |   (  |   =  |      |           |      |   *  |   )  |   +  |   ]  |   !  |   #    |
+ * |  Macro |   [  |   {  |   }  |   (  |   =  |      |           |      |   *  |   )  |   +  |   ]  |   !  |   #    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |   |    |  ;:  |  ,<  |  .>  |   P  |   Y  |  Meh |           |  Meh |   F  |   G  |   C  |   R  |   L  |   /    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -38,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = KEYMAP(
         // left hand
-		KC_TRNS,	KC_LBRC,		KC_LCBR,		KC_RCBR,		KC_LPRN,		KC_EQL,		KC_TRNS,
+		MO(_DYN),	KC_LBRC,		KC_LCBR,		KC_RCBR,		KC_LPRN,		KC_EQL,		KC_TRNS,
 		KC_PIPE,	KC_SCLN,		KC_COMM,		KC_DOT,			KC_P,			KC_Y,		MEH_T(KC_NO),
 		KC_AT,		GUI_T(KC_A),	ALT_T(KC_O),	SFT_T(KC_E),	CTL_T(KC_U),	KC_I,
 		KC_DLR,		KC_BSLS,		KC_Q,			KC_J,			KC_K,			KC_X,		ALL_T(KC_NO),
@@ -269,7 +282,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // MEDIA AND MOUSE
-KEYMAP(
+[MDIA] = KEYMAP(
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,
@@ -288,10 +301,39 @@ KEYMAP(
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_WBAK
 ),
+
+
+[_DYN] = KEYMAP(
+       KC_TRNS,			KC_TRNS,			KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+	   DYN_REC_START1,	DYN_MACRO_PLAY1,	KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+	   DYN_REC_START2,	DYN_MACRO_PLAY2,	KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+	   KC_TRNS,			KC_TRNS,			KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS,			KC_TRNS,			KC_TRNS, KC_TRNS, KC_TRNS, 
+																	   KC_TRNS, KC_TRNS,
+																	   KC_TRNS,
+															  KC_TRNS, KC_TRNS, KC_TRNS,
+    // right hand
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS,	KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+				KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS,	KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+						 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS
+),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+	if (!process_record_dynamic_macro(keycode, record)) {
+		return false;
+	}
+
+	return true;
+}
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
@@ -348,3 +390,21 @@ void matrix_scan_user(void) {
     }
 
 };
+
+bool blinkOn = false;
+void backlight_toggle() { 
+	if(blinkOn)
+	{
+		blinkOn = false;
+		ergodox_right_led_1_off();
+		ergodox_right_led_2_off();
+		ergodox_right_led_3_off();
+	}
+	else
+	{
+		blinkOn = true;
+		ergodox_right_led_1_on();
+		ergodox_right_led_2_on();
+		ergodox_right_led_3_on();
+	}
+}
