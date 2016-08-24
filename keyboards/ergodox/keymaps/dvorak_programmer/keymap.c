@@ -26,12 +26,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        | CAC  |  CAI |       | RESET|      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | App  |       |      |      |      |
- *                                 |Space/| Bck/ |------|       |------|  Tab |Enter/|
+ *                                 |Enter/| Bck/ |------|       |------|  Tab |Space/|
  *                                 | Symb | Fn   | Del  |       |  Esc |      |Accent|
  *                                 `--------------------'       `--------------------'
  *
  * CAC = Ctrl Alt Canc	(for Windows)
- * CAI = Ctrl Alt Ins	(for VWMare)
+ * CAP = Ctrl Alt Pause	(for VWMare)
  *
  */
 [BASE] = KEYMAP(
@@ -42,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_DLR,		KC_QUOT,		KC_Q,			KC_J,			KC_K,			KC_X,		ALL_T(KC_NO),
 		KC_TRNS,	KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
 		
-																		LALT(LCTL(KC_DEL)),		LALT(LCTL(KC_INS)),
+																		LALT(LCTL(KC_DEL)),		LALT(LCTL(KC_PAUSE)),
 																								ALT_T(KC_APP),
-												LT(Symbols, KC_SPC),	LT(Fn, KC_BSPC),		KC_DEL,
+												LT(Symbols, KC_ENT),	LT(Fn, KC_BSPC),		KC_DEL,
         // right hand
 		KC_TRNS,		KC_ASTR,	KC_RPRN,		KC_PLUS,		KC_RBRC,		KC_EXLM,		KC_HASH,
 		MEH_T(KC_NO),	KC_F,		KC_G,			KC_C,			KC_R,			KC_L,			KC_SLSH,
@@ -52,9 +52,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		ALL_T(KC_NO),	KC_B,		KC_M,			KC_W,			KC_V,			KC_Z,			KC_BSLS,
 									KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
 		
-		RESET,		KC_TRNS,
+		RESET,			KC_TRNS,
 		KC_TRNS,
-		KC_ESC,		KC_TAB,		LT(Accents, KC_ENT)
+		KC_ESC,			KC_TAB,		LT(Accents, KC_SPCZ)
     ),
 
 /* Keymap 1: Symbol Layer
@@ -171,9 +171,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [Accents] = KEYMAP(
        // left hand
 		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-		KC_TRNS,		UC(0xa1),	UC(0xa9),	UC(0xad),	UC(0xb3),	UC(0xad),	KC_TRNS,
-		KC_TRNS,		UC(0xa0),	UC(0xa8),	UC(0xac),	UC(0xb2),	UC(0xac),
-		KC_TRNS,		UC(0xa4),	UC(0xab),	UC(0xaf),	UC(0xb6),	UC(0xaf),	KC_TRNS,
+		KC_TRNS,		UC(0xe1),	UC(0xe9),	UC(0xf3),	UC(0xfa),	UC(0xed),	KC_TRNS,
+		KC_TRNS,		UC(0xe0),	UC(0xe8),	UC(0xf2),	UC(0xf9),	UC(0xec),
+		KC_TRNS,		UC(0xe4),	UC(0xeb),	UC(0xf6),	UC(0xfc),	UC(0xef),	KC_TRNS,
 		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 
 																		KC_TRNS,	KC_TRNS,
