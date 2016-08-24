@@ -6,7 +6,7 @@
 #define Symbols 1		// symbols
 #define Fn 2			// Function numbers
 #define Accents 3		// accented letter
-#define Navi 4	// navigation
+#define Navi 4			// navigation
 #define MDIA 5			// media keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -15,11 +15,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   [  |   {  |   }  |   (  |   =  |      |           |      |   *  |   )  |   +  |   ]  |   !  |   #    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   |    |  ,;  |  ,<  |  .>  |   P  |   Y  |  Meh |           |  Meh |   F  |   G  |   C  |   R  |   L  |   /    |
+ * |   |    |  ;:  |  ,<  |  .>  |   P  |   Y  |  Meh |           |  Meh |   F  |   G  |   C  |   R  |   L  |   /    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |   @    | A/Gui| O/Alt|E/Shft|U/Ctrl|   I  |------|           |------|   D  |H/Ctrl|T/Shft| N/Alt|S/Gui |   -    |
  * |--------+------+------+------+------+------| Hyper|           | Hyper|------+------+------+------+------+--------|
- * |   $    |  '"  |   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |   Z  |   \    |
+ * |   $    |  \   |   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |   Z  |   '"   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS,	KC_LBRC,		KC_LCBR,		KC_RCBR,		KC_LPRN,		KC_EQL,		KC_TRNS,
 		KC_PIPE,	KC_SCLN,		KC_COMM,		KC_DOT,			KC_P,			KC_Y,		MEH_T(KC_NO),
 		KC_AT,		GUI_T(KC_A),	ALT_T(KC_O),	SFT_T(KC_E),	CTL_T(KC_U),	KC_I,
-		KC_DLR,		KC_QUOT,		KC_Q,			KC_J,			KC_K,			KC_X,		ALL_T(KC_NO),
+		KC_DLR,		KC_BSLS,		KC_Q,			KC_J,			KC_K,			KC_X,		ALL_T(KC_NO),
 		KC_TRNS,	KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
 		
 																		LALT(LCTL(KC_DEL)),		LALT(LCTL(KC_PAUSE)),
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS,		KC_ASTR,	KC_RPRN,		KC_PLUS,		KC_RBRC,		KC_EXLM,		KC_HASH,
 		MEH_T(KC_NO),	KC_F,		KC_G,			KC_C,			KC_R,			KC_L,			KC_SLSH,
                         KC_D,		CTL_T(KC_H),	SFT_T(KC_T),	ALT_T(KC_N),	GUI_T(KC_S),	KC_MINS,
-		ALL_T(KC_NO),	KC_B,		KC_M,			KC_W,			KC_V,			KC_Z,			KC_BSLS,
+		ALL_T(KC_NO),	KC_B,		KC_M,			KC_W,			KC_V,			KC_Z,			KC_QUOT,
 									KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
 		
 		RESET,			KC_TRNS,
