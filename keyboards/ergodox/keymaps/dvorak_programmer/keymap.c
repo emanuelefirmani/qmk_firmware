@@ -21,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| Hyper|           | Hyper|------+------+------+------+------+--------|
  * |   $    |  \   |   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |   Z  |   '"   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   |      | PgUp |PgDown|  Up  | Down |                                       | Left | Right| Home |  End |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | CAC  |  CAI |       | RESET|  CSI |
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_PIPE,	KC_SCLN,		KC_COMM,		KC_DOT,			KC_P,			KC_Y,		MEH_T(KC_NO),
 		KC_AT,		GUI_T(KC_A),	ALT_T(KC_O),	SFT_T(KC_E),	CTL_T(KC_U),	KC_I,
 		KC_DLR,		KC_BSLS,		KC_Q,			KC_J,			KC_K,			KC_X,		ALL_T(KC_NO),
-		KC_TRNS,	KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
+		KC_TRNS,	KC_PGUP,		KC_PGDN,		KC_UP,			KC_DOWN,
 		
 																		LALT(LCTL(KC_DEL)),		LALT(LCTL(KC_PAUSE)),
 																								ALT_T(KC_APP),
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		MEH_T(KC_NO),	KC_F,		KC_G,			KC_C,			KC_R,			KC_L,			KC_SLSH,
                         KC_D,		CTL_T(KC_H),	SFT_T(KC_T),	ALT_T(KC_N),	GUI_T(KC_S),	KC_MINS,
 		ALL_T(KC_NO),	KC_B,		KC_M,			KC_W,			KC_V,			KC_Z,			KC_QUOT,
-									KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
+									KC_LEFT,		KC_RGHT,		KC_HOME,		KC_END,		KC_TRNS,
 		
 		RESET,			LCTL(LSFT(KC_INSERT)),
 		KC_TRNS,
