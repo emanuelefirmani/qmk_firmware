@@ -6,7 +6,7 @@
 #define Symbols 1		// symbols
 #define Fn 2			// Function numbers
 #define Accents 3		// accented letter
-#define Navigation 4	// navigation
+#define Navi 4	// navigation
 #define MDIA 5			// media keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		
 		RESET,			KC_TRNS,
 		KC_TRNS,
-		KC_ESC,			LT(Navigation, KC_TAB),		LT(Accents, KC_SPCZ)
+		KC_ESC,			LT(Navi, KC_TAB),		LT(Accents, KC_SPCZ)
     ),
 
 /* Keymap 1: Symbol Layer
@@ -215,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
- [Fn] = KEYMAP(
+ [Navi] = KEYMAP(
        // left hand
 		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 		KC_TRNS,		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
