@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | CAC  |  CAI |       | RESET|      |
+ *                                        | CAC  |  CAI |       | RESET|  CSI |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | App  |       |      |      |      |
  *                                 |Enter/| Bck/ |------|       |------|  Tab/|Space/|
@@ -33,6 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  * CAC = Ctrl Alt Canc	(for Windows)
  * CAP = Ctrl Alt Pause	(for VWMare)
+ * CSI = Ctrl Shift Insert (for ClipX)
  *
  */
 [BASE] = KEYMAP(
@@ -53,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		ALL_T(KC_NO),	KC_B,		KC_M,			KC_W,			KC_V,			KC_Z,			KC_QUOT,
 									KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,		KC_TRNS,
 		
-		RESET,			KC_TRNS,
+		RESET,			LCTL(LSFT(KC_INSERT)),
 		KC_TRNS,
 		KC_ESC,			LT(Navi, KC_TAB),		LT(Accents, KC_SPC)
     ),
