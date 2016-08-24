@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		
 		RESET,			KC_TRNS,
 		KC_TRNS,
-		KC_ESC,			LT(Navi, KC_TAB),		LT(Accents, KC_SPCZ)
+		KC_ESC,			LT(Navi, KC_TAB),		LT(Accents, KC_SPC)
     ),
 
 /* Keymap 1: Symbol Layer
