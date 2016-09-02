@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        | CAC  |  CAI |       | RESET|  CSI |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | App  |       |      |      |      |
- *                                 |Enter/| Bck/ |------|       |------|  Tab/|Space/|
- *                                 | Symb | Fn   | Del  |       |  Esc |  Nav |Accent|
+ *                                 |Enter/| Tab/ |------|       |------|  Bck/|Space/|
+ *                                 | Symb | Fn   | Esc  |       | Del  |  Nav |Accent|
  *                                 `--------------------'       `--------------------'
  *
  * CAC = Ctrl Alt Canc	(for Windows)
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		
 																		LALT(LCTL(KC_DEL)),		LALT(LCTL(KC_PAUSE)),
 																								ALT_T(KC_APP),
-												LT(Symbols, KC_ENT),	LT(Fn, KC_BSPC),		KC_DEL,
+												LT(Symbols, KC_ENT),	LT(Fn, KC_TAB),			KC_ESC,
         // right hand
 		KC_TRNS,		KC_ASTR,	KC_RPRN,		KC_PLUS,		KC_RBRC,		KC_EXLM,		KC_HASH,
 		MEH_T(KC_NO),	KC_F,		KC_G,			KC_C,			KC_R,			KC_L,			KC_MINS,
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		
 		RESET,			LCTL(LSFT(KC_INSERT)),
 		KC_TRNS,
-		KC_ESC,			LT(Navi, KC_TAB),		LT(Accents, KC_SPC)
+		KC_DEL,			LT(Navi, KC_BSPC),		LT(Accents, KC_SPC)
     ),
 
 /* Keymap 1: Symbol Layer
